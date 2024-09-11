@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+
+<section>
+  <h2>Poems</h2>
+
+  <!-- Display the submitted blog content -->
+  <% if (blogContent) { %>
+    <h3>Your Submitted Poem:</h3>
+    <p><%= blogContent %></p>
+
+    <!-- Form to delete the poem -->
+    <form action="/delete/<%= blogId %>" method="POST">
+      <input type="submit" value="Delete Poem" style="background-color: rgb(161, 104, 24); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">
+    </form>
+  <% } else { %>
+    <p>No poem submitted yet. Go back to the homepage to submit one.</p>
+  <% } %>
+  
+  <!-- Link to go back to the homepage -->
+  <a href="/">Back to Homepage</a>
+</section>
+
+<%- include("partials/footer.ejs") %>

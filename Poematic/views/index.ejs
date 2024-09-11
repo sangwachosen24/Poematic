@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+
+<section>
+  <h2>Poem HomePage</h2>
+  <p>Creative people write poems, beautiful minds read poems. WHAT ARE YOU?</p>
+
+  <!-- Form to submit blog content -->
+  <form action="/submit" method="POST">
+    <textarea name="blogContent" rows="10" cols="50" placeholder="Enter your text here..."></textarea>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <br>
+  <br>
+
+  <h3>Saved Poems</h3>
+  <br>
+  <ul>
+    <% blogs.forEach(function(blog) { %>
+      <li>
+        <!-- Extract and display the first 10 words of the blog content -->
+        <a href="/poems/<%= blog.id %>">
+          <%= blog.content.split(" ").slice(0, 10).join(" ") %>... <!-- Shows the first 10 words -->
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+
+  <a href="/poems">A link to the poems sections</a>
+</section>
+
+<%- include("partials/footer.ejs") %>
